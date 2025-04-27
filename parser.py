@@ -5,7 +5,7 @@ from typing import List, Optional
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-logger = logging.getLogger("grain-scraper")
+logger = logging.getLogger("grain-mcp-server")
 
 @dataclass
 class Meeting:
