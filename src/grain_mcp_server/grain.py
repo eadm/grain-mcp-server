@@ -6,7 +6,7 @@ from typing import List
 
 from playwright.async_api import async_playwright
 
-from parser import Meeting, parse_meetings
+from grain_mcp_server.parser import Meeting, parse_meetings
 
 
 class Grain:

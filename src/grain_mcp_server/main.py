@@ -6,7 +6,7 @@ from dataclasses import asdict
 
 from fastmcp import FastMCP
 
-from grain import Grain
+from grain_mcp_server.grain import Grain
 
 # Configure logging
 logging.basicConfig(
@@ -107,7 +107,7 @@ def main() -> None:
     # Configure logging level based on debug flag
     if args.debug:
         logger.setLevel(logging.DEBUG)
-        logger.addHandler(logging.FileHandler("grain-mcp-server.log"))
+        logger.addHandler(logging.FileHandler("../../grain-mcp-server.log"))
         logger.addHandler(logging.StreamHandler())
         logger.debug("Debug mode enabled")
     #

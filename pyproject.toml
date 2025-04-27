@@ -10,8 +10,14 @@ dependencies = [
     "playwright>=1.51.0",
 ]
 
+[project.scripts]
+grain-mcp-server = "grain_mcp_server.main:main"
 [dependency-groups]
 dev = [
     "pytest>=8.3.5",
     "pytest-cov>=6.1.1",
 ]
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
