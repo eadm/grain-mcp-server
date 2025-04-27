@@ -1,13 +1,10 @@
-import os
-import sys
-from bs4 import BeautifulSoup
 from datetime import datetime
 from unittest.mock import MagicMock, patch
 
-# Add the parent directory to the path so we can import the parser module
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from bs4 import BeautifulSoup
 
-from src.grain_mcp_server.parser import (
+# Import the parser module
+from grain_mcp_server.parser import (
     Meeting,
     parse_meetings,
     parse_meeting_data,
@@ -132,7 +129,7 @@ class TestParser:
         mock_date.isoformat.return_value = "2024-03-15T14:30:00"
 
         # Use a fixed year for testing and return our mock date object
-        with patch('parser.datetime', autospec=True) as mock_datetime:
+        with patch('grain_mcp_server.parser.datetime', autospec=True) as mock_datetime:
             mock_datetime.now.return_value = datetime(2024, 1, 1)
             # Make datetime constructor return our mock
             mock_datetime.side_effect = lambda *args, **kwargs: mock_date if len(args) > 3 else datetime(*args, **kwargs)
@@ -141,7 +138,7 @@ class TestParser:
             assert result == "2024-03-15T14:30:00"
 
         # Test with provided year - using a different approach with direct patching of datetime constructor
-        with patch('parser.datetime', autospec=True) as mock_datetime:
+        with patch('grain_mcp_server.parser.datetime', autospec=True) as mock_datetime:
             # Create a real datetime object for the .now() call
             mock_datetime.now.return_value = datetime(2023, 1, 1)
 
@@ -164,7 +161,7 @@ class TestParser:
         meeting_item = soup.find("a", attrs={"role": "article", "data-cy": "meeting-list-item"})
 
         # Mock the parse_date_to_iso function to return a fixed date
-        with patch('parser.parse_date_to_iso', return_value="2024-03-15T14:30:00"):
+        with patch('grain_mcp_server.parser.parse_date_to_iso', return_value="2024-03-15T14:30:00"):
             meeting = parse_meeting_data(meeting_item)
 
             assert isinstance(meeting, Meeting)
