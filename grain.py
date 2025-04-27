@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import time
 from pathlib import Path
@@ -24,7 +25,7 @@ class Grain:
         await page.goto(Grain.BASE_URL + Grain.MEETINGS_ENDPOINT)
         # Wait for page load and possible redirects
         await page.wait_for_load_state("load", timeout=60000)  # 30 seconds timeout
-        time.sleep(2)  # Additional time for any dynamic redirects
+        await asyncio.sleep(2)  # Additional time for any dynamic redirects
 
         # Check if we need to log in
         if "login" in page.url:
@@ -104,7 +105,6 @@ class Grain:
             headless=False,  # Set to True for production use
             slow_mo=100,  # Slow down operations for better viewing (remove for production)
         )
-        page = await self.__context.new_page()
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
