@@ -20,14 +20,14 @@ Add the Grain MCP server configuration to your MCP client:
         "git+https://github.com/eadm/grain-mcp-server",
         "grain-mcp-server",
         "--user-data-dir",
-        "<path-to-browser-session-data>"
+        "<absolute-path-to-browser-session-data>"
       ]
     }
   }
 }
 ```
 
-Replace `<path-to-browser-session-data>` with the path where you want to store the browser session data. On first MCP usage, you will need to login to Grain via the browser.
+Replace `<absolute-path-to-browser-session-data>` with the absolute path where you want to store the browser session data. On first MCP usage, you will need to login to Grain via the browser.
 
 ## Components
 
