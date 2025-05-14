@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/eadm-grain-mcp-server-badge.png)](https://mseep.ai/app/eadm-grain-mcp-server)
+
 # Grain MCP Server
 
 A [Model Context Protocol](https://github.com/modelcontextprotocol) server for [Grain](https://grain.com/), a service that records and transcribes meetings.
